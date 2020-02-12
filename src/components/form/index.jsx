@@ -1,6 +1,10 @@
 import React from 'react';
+import { CategoryContext } from '../../contexts/category';
 
 const Form = () => {
+
+    const { data } = React.useContext(CategoryContext);
+
     return ( 
         <form className="col-md-12 mt-2">
             <fieldset className="text-center">
