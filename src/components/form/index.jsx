@@ -3,7 +3,7 @@ import { CategoryContext } from '../../contexts/category';
 
 const Form = () => {
 
-    const { data } = React.useContext(CategoryContext);
+    const { categories } = React.useContext(CategoryContext);
 
     return ( 
         <form className="col-md-12 mt-2">
@@ -26,6 +26,11 @@ const Form = () => {
                         name="category"
                     >
                         <option value="">--Seleccione una Categoría...</option>
+                        {categories.map((category) => (
+                            <option value={category.strCategory} key={category.strCategory}>
+                                {category.strCategory}
+                            </option>
+                        ))}
                     </select>
                 </div>
 
