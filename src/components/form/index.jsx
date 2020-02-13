@@ -4,6 +4,15 @@ import { CategoryContext } from '../../contexts/category';
 const Form = () => {
 
     const { categories } = React.useContext(CategoryContext);
+    const [data, setData] = React.useState({
+        name: '',
+        category: '',
+    })
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setData({ ...data, [name]: value });
+    }
 
     return ( 
         <form className="col-md-12 mt-2">
@@ -18,12 +27,14 @@ const Form = () => {
                         className="form-control"
                         type="text"
                         placeholder="Buscar por Ingrediente"
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="col-md-4">
                     <select
                         className="form-control"
                         name="category"
+                        onChange={handleChange}
                     >
                         <option value="">--Seleccione una Categoría...</option>
                         {categories.map((category) => (
