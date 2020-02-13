@@ -1,9 +1,11 @@
 import React from 'react';
 import { CategoryContext } from '../../contexts/category';
+import { RecipesContext } from '../../contexts/recipes';
 
 const Form = () => {
 
     const { categories } = React.useContext(CategoryContext);
+    const { setSearch, setConsult } = React.useContext(RecipesContext);
     const [data, setData] = React.useState({
         name: '',
         category: '',
@@ -14,8 +16,14 @@ const Form = () => {
         setData({ ...data, [name]: value });
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setSearch(data);
+        setConsult(true);
+    }
+
     return ( 
-        <form className="col-md-12 mt-2">
+        <form className="col-md-12 mt-2" onSubmit={handleSubmit}>
             <fieldset className="text-center">
                 <legend>Buscar bebidas por Categoría o Ingrediente</legend>
             </fieldset>
